@@ -1,0 +1,51 @@
+Информация о датасете до удаления пропусков:
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 402368 entries, 0 to 402367
+Data columns (total 7 columns):
+ #   Column              Non-Null Count   Dtype
+---  ------              --------------   -----
+ 0   gender              402368 non-null  Int64
+ 1   age                 402368 non-null  Int64
+ 2   smoking             381268 non-null  Int64
+ 3   Diabetes            401245 non-null  Int64
+ 4   chronic_disease     402368 non-null  int64
+ 5   alcohol             375593 non-null  Int64
+ 6   pulmonary_diseases  402368 non-null  int64
+dtypes: Int64(5), int64(2)
+memory usage: 23.4 MB
+
+Количество пропущенных значений в каждой колонке до удаления пропусков:
+gender                    0
+age                       0
+smoking               21100
+Diabetes               1123
+chronic_disease           0
+alcohol               26775
+pulmonary_diseases        0
+dtype: int64
+
+Информация о датасете после удаления пропусков:
+<class 'pandas.core.frame.DataFrame'>
+Index: 372147 entries, 309 to 402367
+Data columns (total 7 columns):
+ #   Column              Non-Null Count   Dtype
+---  ------              --------------   -----
+ 0   gender              372147 non-null  Int64
+ 1   age                 372147 non-null  Int64
+ 2   smoking             372147 non-null  Int64
+ 3   Diabetes            372147 non-null  Int64
+ 4   chronic_disease     372147 non-null  int64
+ 5   alcohol             372147 non-null  Int64
+ 6   pulmonary_diseases  372147 non-null  int64
+dtypes: Int64(5), int64(2)
+memory usage: 24.5 MB
+
+Количество пропущенных значений в каждой колонке после удаления пропусков:
+gender                0
+age                   0
+smoking               0
+Diabetes              0
+chronic_disease       0
+alcohol               0
+pulmonary_diseases    0
+dtype: int64
