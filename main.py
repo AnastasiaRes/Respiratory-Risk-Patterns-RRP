@@ -1,5 +1,6 @@
 import pandas as pd
 import os
+import subprocess
 
 # Получение текущего пути к скрипту
 current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -7,9 +8,21 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 # Путь к папке с данными
 data_dir = os.path.join(current_dir, 'datasets')
 
+# Выполнение кода rename.py
+rename_script_path = os.path.join(current_dir, 'rename.py')
+if os.path.exists(rename_script_path):
+    print("Executing rename.py script...")
+    try:
+        subprocess.run(['python3', rename_script_path], check=True)  # Используем python3 вместо python
+    except subprocess.CalledProcessError as e:
+        print(f"Error executing rename.py: {e}")
+        exit(1)
+else:
+    print("rename.py script not found. Skipping execution.")
+
 # Путь для копии папки
 copied_data_dir = os.path.join(current_dir, 'datasets_copy')
-
+os.makedirs(copied_data_dir, exist_ok=True)
 
 # Список колонок для объединения
 columns_to_merge = ['gender', 'age', 'smoking', 'Diabetes', 'chronic_disease', 'alcohol', 'pulmonary_diseases']
@@ -38,5 +51,3 @@ combined_dataset.to_csv(output_path, index=False)
 
 print(f"Общий датасет сохранен в '{output_path}'.")
 print("Размер объединенного датасета:", combined_dataset.shape)
-
-
