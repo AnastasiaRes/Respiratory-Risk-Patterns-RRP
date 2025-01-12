@@ -58,7 +58,7 @@ statistics_summary['mode'] = cleaned_dataset.mode().iloc[0]
 statistics_summary['unique_values'] = cleaned_dataset.nunique()
 
 # Добавление количества пропусков (для проверки)
-statistics_summary['missing_values'] = combined_dataset.isnull().sum()
+statistics_summary['missing_values'] = round(combined_dataset.isnull().sum()/len(combined_dataset)*100, 2)
 
 # Сохранение сводной таблицы
 output_path_summary = os.path.join(results_dir, 'statistics_summary.csv')
@@ -213,5 +213,24 @@ plt.yticks(fontsize=12)
 plt.savefig(os.path.join(results_dir, 'gender_vs_pulmonary_diseases.png'))
 plt.close()
 print("График 'gender vs pulmonary_diseases' сохранен в results.")
+
+# Барплот для диабета и легочных заболеваний
+plt.figure(figsize=(10, 6))
+sns.barplot(
+    data=cleaned_dataset,
+    x='Diabetes',
+    y='pulmonary_diseases',
+    estimator=lambda x: sum(x) / len(x),
+    ci=None,
+    palette='viridis'
+)
+plt.title('Связь между диабетом и легочными заболеваниями', fontsize=16)
+plt.xlabel('Diabetes (1 = yes, 0 = no)', fontsize=14)
+plt.ylabel('Pulmonary Disease Rate', fontsize=14)
+plt.xticks(fontsize=12)
+plt.yticks(fontsize=12)
+plt.savefig(os.path.join(results_dir, 'diabetes_vs_pulmonary_diseases.png'))
+plt.close()
+print("График 'diabetes vs pulmonary_diseases' сохранен в results.")
 
 print('топ неожиданных поворотов')
