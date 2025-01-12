@@ -300,6 +300,8 @@ if 'CHCCOPD2' in brfss.columns and 'ASTHMA3' in brfss.columns:
     brfss['pulmonary_diseases'] = brfss.apply(assign_pulmonary, axis=1)
     print("Колонка 'pulmonary_diseases' добавлена в файле 'brfss2020_copy.csv'.")
     brfss.to_csv(os.path.join(copied_data_dir, 'brfss2020_copy.csv'), index=False)
+    subset = brfss.drop(columns=chronic_columns, axis=1)
+    subset.to_csv(os.path.join(copied_data_dir, 'brfss2020_copy.csv'), index=False)
 
 
 

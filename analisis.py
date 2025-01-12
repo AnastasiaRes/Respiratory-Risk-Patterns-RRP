@@ -58,7 +58,7 @@ statistics_summary['mode'] = cleaned_dataset.mode().iloc[0]
 statistics_summary['unique_values'] = cleaned_dataset.nunique()
 
 # Добавление количества пропусков (для проверки)
-statistics_summary['missing_values'] = cleaned_dataset.isnull().sum()
+statistics_summary['missing_values'] = combined_dataset.isnull().sum()
 
 # Сохранение сводной таблицы
 output_path_summary = os.path.join(results_dir, 'statistics_summary.csv')

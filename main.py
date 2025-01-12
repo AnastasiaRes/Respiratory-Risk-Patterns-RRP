@@ -1,6 +1,8 @@
 import pandas as pd
 import os
 import subprocess
+import sqlite3
+
 
 # Получение текущего пути к скрипту
 current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -49,5 +51,9 @@ combined_dataset = pd.concat([lung_cancer_filtered, copd_filtered, brfss_filtere
 output_path = os.path.join(copied_data_dir, 'combined_dataset.csv')
 combined_dataset.to_csv(output_path, index=False)
 
-print(f"Общий датасет сохранен в '{output_path}'.")
+output = os.path.join(copied_data_dir, 'combined_dataset.db')
+conn = sqlite3.connect(output)
+combined_dataset.to_sql('counts', conn, if_exists='replace', index=False)
+
+print(f"Общий датасет сохранен в '{output}'.")
 print("Размер объединенного датасета:", combined_dataset.shape)
