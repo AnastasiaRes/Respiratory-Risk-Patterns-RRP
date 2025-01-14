@@ -97,7 +97,12 @@ sns.barplot(data=feature_importance_df, x='Importance', y='Feature', palette='vi
 plt.title('Важность признаков для предсказания легочных заболеваний', fontsize=16)
 plt.xlabel('Importance', fontsize=14)
 plt.ylabel('Feature', fontsize=14)
-plt.xticks(fontsize=12)
-plt.yticks(fontsize=12)
 plt.tight_layout()
-plt.show()
+
+# Сохранение визуализации важности признаков
+feature_importance_path = os.path.join(results_dir, 'feature_importance.png')
+plt.savefig(feature_importance_path)
+print(f"Важность признаков сохранена в файл: {feature_importance_path}")
+plt.close()
+
+print("Все результаты успешно сохранены.")

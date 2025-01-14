@@ -108,7 +108,7 @@ for column in columns_to_analyze:
 # Визуализация распределения для 'age'
 plt.figure(figsize=(12, 6))
 sns.histplot(cleaned_dataset['age'], bins=30, kde=True, color='blue')
-plt.title("Distribution of Age", fontsize=16)
+plt.title("Распределение по возрасту", fontsize=16)
 plt.xlabel("Age", fontsize=14)
 plt.ylabel("Count", fontsize=14)
 plt.xticks(fontsize=12)
